@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8" v-if="pokemons.length > 0">
+    <div class="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8" v-show="pokemons.length > 0">
       <h2 class="text-2xl font-extrabold tracking-tight text-gray-900 text-center mb-4">Liste de nos pokémons</h2>
       <!-- Search bar -->
       <div class="flex justify-center">
@@ -33,7 +33,7 @@
     </div>
 
     <!-- loading -->
-    <div class="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8" v-else>
+    <div class="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8" v-show="pokemons.length === 0">
       <h2 class="text-2xl font-extrabold tracking-tight text-gray-900 mb-4">Chargement en cours...</h2>
     </div>
   </div>

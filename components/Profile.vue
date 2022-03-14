@@ -1,6 +1,5 @@
 <template>
   <div>
-
     <div class="bg-white">
       <div class="pt-6">
         <div class="mt-6 max-w-2xl mx-auto sm:px-6 lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-3 lg:gap-x-8" v-if="monster.sprites" >
@@ -56,7 +55,7 @@
     </div>
 
     <!-- loading -->
-    <div class="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8" v-if="isLoading">
+    <div class="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8" v-show="isLoading">
       <h2 class="text-2xl font-extrabold tracking-tight text-gray-900 mb-4">Chargement en cours...</h2>
     </div>
   </div>
@@ -88,8 +87,13 @@ export default Vue.extend({
       )
     },
     async getMonster(): Promise<void> {
-      const response = await this.$axios.$get(`pokemon/` + this.monsterName);
-      this.monster = response;
+      try {
+        const response = await this.$axios.$get(`pokemon/` + this.monsterName);
+        this.monster = response;
+      } catch (e) {
+        console.log(e);
+        await this.$nuxt.$options.router!.push('/');
+      }
     },
   },
   beforeMount(): void {
