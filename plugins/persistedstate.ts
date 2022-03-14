@@ -1,7 +1,10 @@
 import { createPersistedStatePlugin } from 'pinia-plugin-persistedstate-2'
+// @ts-ignore
 import Cookies from 'js-cookie'
+// @ts-ignore
 import cookie from 'cookie'
 
+// @ts-ignore
 export default function ({ $pinia, ssrContext }) {
   $pinia.use(
     createPersistedStatePlugin({
